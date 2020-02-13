@@ -1,22 +1,17 @@
 <template>
-	<Div ID = "App">
-		<router-view />
-	</Div>
+	<Main ID = "app">
+		<HappyValentine />
+	</Main>
 </template>
 
 <style lang = "scss">
 	*, *::before, *::after { box-sizing: border-box }
-
-	html {
-		&, body {
-			margin: 0;
-			overflow: hidden;
-		}
-
-		body { background-color: initial }
-	}
 </style>
 
 <script>
-	export default {};
+	import HappyValentine from "./views/HappyValentine";
+
+	export default {
+		components: { HappyValentine }
+	};
 </script>
