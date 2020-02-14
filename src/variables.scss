@@ -1,0 +1,11 @@
+$Palette: (
+	primary: #ffc9d2,
+	primary-lighter: #faced6,
+	primary-darker: #ff8e86,
+
+	secondary: #d6f2ef
+);
+
+@function color ($name) {
+	@return map-get($Palette, $name);
+}
