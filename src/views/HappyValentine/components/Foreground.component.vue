@@ -46,29 +46,14 @@
 			}
 
 			@keyframes fg_title--phase3 { /* ハートが往来して飛んでいく */
-				0% {
-					transform: rotate(0deg);
-				}
-
-				20% {
-					transform: rotate(-90deg);
-				}
-
-				40% {
-					transform: rotate(-90deg);
-				}
-
-				60% {
-					transform: translate(250%, -15%) rotate(-105deg);
-				}
-
-				90% {
-					transform: translate(150%, 50%) rotate(-45deg);
-				}
-
-				100% {
-					transform: translate(-250%, -50%) rotate(135deg);
-				}
+				0% { transform: rotate(0deg) }
+				20% { transform: rotate(-90deg) }
+				40% { transform: rotate(-90deg) }
+				50% { transform: translate(200%, -75%) rotate(-135deg) }
+				60% { transform: translate(250%, -50%) rotate(-120deg) }
+				80% { transform: translate(225%, 50%) rotate(45deg) }
+				90% { transform: translate(200%, 50%) rotate(60deg) }
+				100% { transform: translate(-250%, -50%) rotate(135deg) }
 			}
 
 			@keyframes fg_title--phase4 { /* タイトル表示 */
@@ -109,7 +94,7 @@
 				.#{$PREFIX}__fg_title--heart {
 					animation: fg_title--phase2 0.75s ease-out 0.5s forwards;
 
-					&[anime-fg_title--phase2--done] { animation: fg_title--phase3 5s ease 1s forwards }
+					&[anime-fg_title--phase2--done] { animation: fg_title--phase3 5s ease-in 1s forwards }
 				}
 			}
 
