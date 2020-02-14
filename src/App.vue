@@ -29,8 +29,6 @@
 				display: block;
 				width: 100%; height: 100%;
 			}
-
-			*[data-uuid = "fg"] { z-index: 127 }
 		}
 	}
 </style>
@@ -47,7 +45,7 @@
 
 		methods: {
 			async loadSprites () {
-				const contents = await (await fetch("/assets/sprites.svg")).text();
+				const contents = await (await fetch("./assets/sprites.svg")).text();
 
 				const svgWrapper = document.createElement("div");
 				svgWrapper.id = "SPRITES",
