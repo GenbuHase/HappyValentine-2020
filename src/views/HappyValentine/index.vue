@@ -3,6 +3,7 @@
 		<Background />
 		<Sprites />
 		<Table />
+		<Foreground />
 	</Section>
 </template>
 
@@ -10,6 +11,7 @@
 	import { UuidMixin } from "@/mixins";
 
 	import Background from "./components/Background.component";
+	import Foreground from "./components/Foreground.component";
 	import Sprites from "./components/Sprites.component";
 	import Table from "./components/Table.component";
 
@@ -17,7 +19,7 @@
 	export const PREFIX = "happyValentine";
 
 	export default {
-		components: { Background, Sprites, Table },
+		components: { Background, Foreground, Sprites, Table },
 		mixins: [ UuidMixin(PREFIX) ],
 
 		computed: {

@@ -3,7 +3,9 @@ $Palette: (
 	primary-lighter: #faced6,
 	primary-darker: #ff8e86,
 
-	secondary: #d6f2ef
+	secondary: #d6f2ef,
+	secondary-lighter: #d3f5f2,
+	secondary-darker: #91dcd4
 );
 
 @function color ($name) {

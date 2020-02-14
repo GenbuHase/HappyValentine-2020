@@ -10,7 +10,10 @@
 	img:not([alt]) { filter: none }
 
 
-	body { height: 100vh }
+	body {
+		height: 100vh;
+		overflow: hidden;
+	}
 
 	#SPRITES { display: none }
 

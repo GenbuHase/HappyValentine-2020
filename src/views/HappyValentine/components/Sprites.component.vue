@@ -1,14 +1,6 @@
 <template>
 	<Section v-uuid data-uuid = "sprites">
-		<Sprite
-			name = "heart"
-			:config = "{
-				fill: 'transparent',
-
-				stroke: 'gray',
-				'stroke-width': 8
-			}"
-		/>
+		<Sprite name = "heart" display = "none" />
 	</Section>
 </template>
 
