@@ -6,7 +6,10 @@
 				name = "heart" :config = "{ height: '50%' }"
 			/>
 
-			<Span v-uuid data-uuid = "fg_title--text" />
+			<Sprite
+				v-uuid data-uuid = "fg_title--message"
+				name = "heart-message" :config = "{ height: '50%' }"
+			/>
 		</Div>
 	</Section>
 </template>
@@ -49,25 +52,33 @@
 				0% { transform: rotate(0deg) }
 				20% { transform: rotate(-90deg) }
 				40% { transform: rotate(-90deg) }
-				50% { transform: translate(200%, -75%) rotate(-135deg) }
-				60% { transform: translate(250%, -50%) rotate(-120deg) }
-				80% { transform: translate(225%, 50%) rotate(45deg) }
-				90% { transform: translate(200%, 50%) rotate(60deg) }
-				100% { transform: translate(-250%, -50%) rotate(135deg) }
+				50% { transform: translate(200%, -75%) rotate(-135deg) scale(0.9) }
+				60% { transform: translate(250%, -50%) rotate(-120deg) scale(0.8) }
+				80% { transform: translate(225%, 50%) rotate(45deg) scale(0.6) }
+				90% { transform: translate(200%, 50%) rotate(60deg) scale(0.8) }
+				100% { transform: translate(-250%, -50%) rotate(135deg) scale(1.4) }
 			}
 
-			@keyframes fg_title--phase4 { /* タイトル表示 */
-				0% { --text: "♡" }
-				10% { --text: "♡2" }
-				20% { --text: "♡20" }
-				30% { --text: "♡202" }
-				40% { --text: "♡2020" }
-				50% { --text: "♡2020." }
-				60% { --text: "♡2020.2" }
-				70% { --text: "♡2020.2." }
-				80% { --text: "♡2020.2.1" }
-				90% { --text: "♡2020.2.14" }
-				100% { --text: "♡2020.2.14♡" }
+			@keyframes fg_title--phase4 { /* ハートが中心に戻ってくる */
+				0% {
+					opacity: 0;
+					transform: scale(0);
+				}
+
+				80% {
+					transform: scale(1.2);
+				}
+
+				100% {
+					opacity: 1;
+					transform: scale(1);
+				}
+			}
+
+			@keyframes fg_title--phase5 { /* タイトル表示 */
+				0% { transform: scale(0) }
+				80% { transform: scale(1.2) }
+				100% { transform: scale(1) }
 			}
 
 
@@ -87,14 +98,15 @@
 					background: color(primary-darker);
 				}
 
-				animation: fg_title--phase1 2.5s ease 0s forwards;
+				animation: fg_title--phase1 2.5s ease 0s;
 			}
 
 			&[anime-fg_title--phase1--done] {
 				.#{$PREFIX}__fg_title--heart {
-					animation: fg_title--phase2 0.75s ease-out 0.5s forwards;
+					animation: fg_title--phase2 0.75s ease-out 0.5s;
 
-					&[anime-fg_title--phase2--done] { animation: fg_title--phase3 5s ease-in 1s forwards }
+					&[anime-fg_title--phase2--done] { animation: fg_title--phase3 5s ease-in 1s }
+					&[anime-fg_title--phase3--done] { animation: fg_title--phase4 0.75s ease 1s }
 				}
 			}
 
@@ -112,13 +124,31 @@
 
 					transform: scale(1);
 				}
+
+				&[anime-fg_title--phase3--done] {
+					fill: rgba(0, 0, 0, 0);
+					opacity: 0;
+				}
+
+				&[anime-fg_title--phase4--done] {
+					opacity: 1;
+
+					& + .#{$PREFIX}__fg_title--message { animation: fg_title--phase5 0.75s ease 0s }
+				}
 			}
 
-			/*&--text {
-				&::after { content: var(--text, "") }
+			&--message {
+				position: absolute;
 
-				animation: fg_title--phase3 3s ease 3s forwards;
-			}*/
+				fill: rgba(0, 0, 0, 0);
+				stroke: rgba(0, 0, 0, 0); stroke-width: 0;
+
+				transform: scale(0);
+				transform-origin: 50% 50%;
+
+
+				&[anime-fg_title--phase5--done] { transform: scale(1) }
+			}
 		}
 	}
 </style>
