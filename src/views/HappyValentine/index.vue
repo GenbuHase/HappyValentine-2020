@@ -1,50 +1,23 @@
 <template>
 	<Section v-uuid :data-uuid-prefix = "PREFIX">
-		<Section v-uuid data-uuid = "bg" />
-		<Section v-uuid data-uuid = "fg" />
-
-		<Section v-uuid data-uuid = "sprites">
-			<Sprite
-				name = "heart"
-				:config = "{
-					fill: 'transparent',
-
-					stroke: 'gray',
-					'stroke-width': 8
-				}"
-			/>
-		</Section>
-
+		<Background />
+		<Sprites />
 		<Table />
 	</Section>
 </template>
 
-<style lang = "scss" scoped>
-	@import "@/variables";
-	@import "./variables";
-
-
-	.#{$PREFIX} {
-		&__bg { background: color(primary-lighter) }
-		&__fg {}
-
-		&__sprites {
-			z-index: 1;
-		}
-	}
-</style>
-
 <script>
 	import { UuidMixin } from "@/mixins";
 
-	import Sprite from "@/components/Sprite";
-	import Table from "./components/Table";
+	import Background from "./components/Background.component";
+	import Sprites from "./components/Sprites.component";
+	import Table from "./components/Table.component";
 
 
 	export const PREFIX = "happyValentine";
 
 	export default {
-		components: { Sprite, Table },
+		components: { Background, Sprites, Table },
 		mixins: [ UuidMixin(PREFIX) ],
 
 		computed: {
